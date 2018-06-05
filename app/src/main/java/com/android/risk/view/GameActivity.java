@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ViewFlipper;
 
+import com.android.risk.R;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 /**

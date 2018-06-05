@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.risk.R;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Actionbar4 extends AppCompatActivity {

@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.VideoView;
 
+import com.android.risk.R;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -69,17 +70,17 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.ic_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.ic_sp) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.ic_mp) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.ic_n) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.ic_a) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.ic_g) {
 
         }
 

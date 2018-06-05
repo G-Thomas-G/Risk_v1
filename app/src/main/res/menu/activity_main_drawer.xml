@@ -5,33 +5,33 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/ic_home"
+            android:icon="@drawable/ic_h"
+            android:title="Home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/ic_sp"
+            android:icon="@drawable/ic_sp"
+            android:title="Singleplayer" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/ic_mp"
+            android:icon="@drawable/ic_mp"
+            android:title="Multiplayer" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/ic_n"
+            android:icon="@drawable/ic_n"
+            android:title="News" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Settings">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/ic_a"
+                android:icon="@drawable/ic_a"
+                android:title="Account" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/ic_g"
+                android:icon="@drawable/ic_g"
+                android:title="General" />
         </menu>
     </item>
 

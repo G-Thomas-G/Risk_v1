@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.risk.R;
+
 public class Actionbar1 extends Activity {
 
     @Override

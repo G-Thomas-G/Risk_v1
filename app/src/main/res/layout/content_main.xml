@@ -9,6 +9,25 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <TextView
+        android:id="@+id/risk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/advent_pro_medium"
+        android:text="Risk"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="90sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/risk"
+        android:fontFamily="@font/advent_pro_medium"
+        android:text="Dominate the World, or get erased from this Planet!"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="20sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/material_button"
@@ -16,7 +35,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="100dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/advent_pro_medium"
         android:onClick="startGame"
         android:text="Start Game"
         android:textColor="#FFF"
