@@ -52,13 +52,13 @@ public class GameActivity extends AppCompatActivity {
 
     public void next1() {
 
-        ViewFlipper vf = (ViewFlipper) findViewById(R.id.vf);
+        ViewFlipper vf = findViewById(R.id.vf);
         vf.setDisplayedChild(1);
     }
 
     public void next2() {
 
-        ViewFlipper vf = (ViewFlipper) findViewById(R.id.vf);
+        ViewFlipper vf = findViewById(R.id.vf);
         vf.setDisplayedChild(2);
     }
 
