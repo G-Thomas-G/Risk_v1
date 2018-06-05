@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/map"
+    android:orientation="vertical"
+    android:theme="@style/AppTheme.NoActionBar">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6">
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:background="#000000" />
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:background="#000000"
+            android:onClick="startSettings" />
+
+    </RelativeLayout>
+
+    <ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vf"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp">
+
+        <include
+            android:id="@+id/include1"
+            layout="@layout/activity_actionbar1" />
+
+        <include
+            android:id="@+id/include2"
+            layout="@layout/activity_actionbar2" />
+
+        <include
+            android:id="@+id/include3"
+            layout="@layout/activity_actionbar3" />
+
+        <include
+            android:id="@+id/include4"
+            layout="@layout/activity_actionbar4" />
+
+        <include
+            android:id="@+id/include5"
+            layout="@layout/activity_actionbar5" />
+
+    </ViewFlipper>
+
+
+</LinearLayout>
