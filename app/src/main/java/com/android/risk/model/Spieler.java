@@ -45,7 +45,11 @@ public class Spieler {
      * @param anzahl: Anzahl der Truppen, die gesetzt werden sollen
      */
     public void truppenSetzen(int region, int anzahl) {
+        if(ungesetzteTruppen==0 || ungesetzteTruppen<anzahl){
+            return;
+        }
         spiel.truppenSetzen(region, anzahl);
+        ungesetzteTruppen -=anzahl;
     }
 
     /**
@@ -56,6 +60,7 @@ public class Spieler {
             spiel.naechstePhase();
         }
     }
+
 
     /**
      * 2.Phase: Angriff und eventuelle Übernahme einer Region
@@ -94,14 +99,26 @@ public class Spieler {
         spiel.naechstePhase();
     }
 
+    /**
+     * Setzt das Attribut amZug
+     * @param amZug
+     */
     public void setAmZug(boolean amZug) {
         this.amZug = amZug;
     }
 
+    /**
+     * Gibt eine Liste der besetzten Regionen eines Spielers zurück
+     * @return
+     */
     public ArrayList<Region> gibBesetzteRegionen() {
         return besetzteRegionen;
     }
 
+    /**
+     * Gibt die Anzahl der besetzten Regionen zurück
+     * @return
+     */
     public int gibAnzahlBesetzteRegionen() {
         return besetzteRegionen.size();
     }
