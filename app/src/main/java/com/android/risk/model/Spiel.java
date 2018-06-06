@@ -2,6 +2,7 @@ package com.android.risk.model;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.Random;
 
 /**
  * @author Timo, Thomas
@@ -63,6 +64,7 @@ public class Spiel {
         }
         while (kontinentIterator.hasNext());
 
+        //Regionen
         int spielerregionen = spieler[amZug].gibAnzahlBesetzteRegionen();
         if (!(spielerregionen <= 12)) {
             spielerregionen -= 12;
@@ -92,10 +94,10 @@ public class Spiel {
 
     /**
      * Beendet die Phase des Truppensetzens und geht in die nächste Phase über.
+     * Wird im Normalfall nicht benötigt.
      */
     void setzenBeenden() {
         phase = (phase + 1) % 3; //immer ein Kreislauf: 0,1,2,0,1,2,......
-        //TODO Speichern der Truppen?
     }
 
     /**
@@ -108,8 +110,20 @@ public class Spiel {
      */
     void angreifen(int von, int nach, int anzahl) {
         if (phase == 1) {
-            //TODO Angreifen Methode
+            Region vonregion = karte.getRegion(von);
+            Region zielregion = karte.getRegion(nach);
+
+            //TODO Würfeln Methode
         }
+    }
+
+    private int[] würfeln(int würfelanzahl){
+        int[] ergebnis = new int[würfelanzahl];
+        Random random = new java.util.Random();
+        for  (int i = 0; i<würfelanzahl; ++i){
+            ergebnis[i] = random.nextInt(6)+1;
+        }
+        return ergebnis;
     }
 
     /**

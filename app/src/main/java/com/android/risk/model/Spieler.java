@@ -52,7 +52,9 @@ public class Spieler {
      * Beendet die erste Phase
      */
     public void setzenBeenden() {
-        spiel.naechstePhase();
+        if (ungesetzteTruppen == 0) {
+            spiel.naechstePhase();
+        }
     }
 
     /**
