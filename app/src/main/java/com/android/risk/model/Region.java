@@ -479,6 +479,10 @@ class Region {
         accordingKontinent.istEinheitlichBesetzt();
     }
 
+    int gibTruppenanzahl(){
+        return truppen;
+    }
+
 
     @Override
     public boolean equals(Object o) {

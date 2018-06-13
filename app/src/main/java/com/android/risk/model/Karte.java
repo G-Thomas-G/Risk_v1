@@ -51,6 +51,7 @@ class Karte {
     }
 
     /**
+     * Gibt die Region aus dem jeweiligem Kontinent zurück
      * @param region
      * @return
      */
@@ -71,6 +72,7 @@ class Karte {
     }
 
     /**
+     * Gibt den Besetzer der ausgewählten Region zurück
      * @param region
      * @return
      */
@@ -79,6 +81,7 @@ class Karte {
     }
 
     /**
+     * Gibt die Besetzungen eines Spielers zurück
      * @param spieler
      * @return
      */
