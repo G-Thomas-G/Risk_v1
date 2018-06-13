@@ -113,10 +113,30 @@ public class Spiel {
             Region vonregion = karte.getRegion(von);
             Region zielregion = karte.getRegion(nach);
 
-            //TODO Würfeln Methode
+            //Würfeln
+
+            //Angreifer
+            if (vonregion.gibTruppenanzahl()>=4) {
+                würfeln(3);
+            }
+            if (vonregion.gibTruppenanzahl()==3) {
+                würfeln(2);
+            }
+            if (vonregion.gibTruppenanzahl()==2) {
+                würfeln(1);
+            }
+
+            //Verteidiger
+            if (vonregion.gibTruppenanzahl()>=2) {
+                würfeln(2);
+            }
+            if (vonregion.gibTruppenanzahl()==1) {
+                würfeln(1);
+            }
         }
     }
 
+    //4 Angreifer = 3 Würfel; 2 Verteidiger = 2 Würfel;
     private int[] würfeln(int würfelanzahl){
         int[] ergebnis = new int[würfelanzahl];
         Random random = new java.util.Random();
@@ -124,6 +144,11 @@ public class Spiel {
             ergebnis[i] = random.nextInt(6)+1;
         }
         return ergebnis;
+    }
+
+    private int würfeln () {
+        Random random = new java.util.Random();
+        return random.nextInt(6)+1;
     }
 
     /**
