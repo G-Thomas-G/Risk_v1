@@ -114,38 +114,61 @@ public class Spiel {
             Region zielregion = karte.getRegion(nach);
 
             //Würfeln
+            //4 Angreifer = 3 Würfel; 2 Verteidiger = 2 Würfel
+
+            //Angreifer/Verteidiger verliert maximal 2 Truppen pro Angriff; die besten 2 Würfel zählen
 
             //Angreifer
-            if (vonregion.gibTruppenanzahl()>=4) {
-                würfeln(3);
+            if (anzahl >= 4) {
+                int[]vonergebnis = new int[3];
+                vonergebnis = würfeln(3);
+                int zahl1 = 0;
+                int zahl2 = 0;
+                for (int i = 0;i<vonergebnis.length;i++){
+
+                }
             }
-            if (vonregion.gibTruppenanzahl()==3) {
-                würfeln(2);
+            if (anzahl == 3) {
+                int[]vonergebnis = new int[2];
+                vonergebnis = würfeln(2);
             }
-            if (vonregion.gibTruppenanzahl()==2) {
-                würfeln(1);
+            if (anzahl == 2) {
+                int[]vonergebnis = new int[1];
+                vonergebnis = würfeln(1);
             }
 
+
             //Verteidiger
-            if (vonregion.gibTruppenanzahl()>=2) {
-                würfeln(2);
+            if (vonregion.gibTruppenanzahl() >= 2) {
+                int[]nachergebnis = new int[2];
+                nachergebnis = würfeln(2);
             }
-            if (vonregion.gibTruppenanzahl()==1) {
-                würfeln(1);
+            if (vonregion.gibTruppenanzahl() == 1) {
+                int[]nachergebnis = new int[1];
+                nachergebnis = würfeln(1);
             }
         }
     }
 
-    //4 Angreifer = 3 Würfel; 2 Verteidiger = 2 Würfel;
+    /**
+     * Ruft die Methode würfeln() würfelanzahl-mal auf und speichert das Ergebnis in einem Array,
+     * das zurückgegeben wird.
+     * @param würfelanzahl Die Anzahl gibt die benötigte Anzahl an Würfelwürfen an.
+     * @return Ein Array mit den Würfelergebnissen.
+     */
+
     private int[] würfeln(int würfelanzahl){
         int[] ergebnis = new int[würfelanzahl];
-        Random random = new java.util.Random();
         for  (int i = 0; i<würfelanzahl; ++i){
-            ergebnis[i] = random.nextInt(6)+1;
+            ergebnis[i] = würfeln();
         }
         return ergebnis;
     }
 
+    /**
+     * Berechnet einen Zufallswert von 1 bis 6 und gibt ihn zurück.
+      * @return Gibt den Zufallswert zurück.
+     */
     private int würfeln () {
         Random random = new java.util.Random();
         return random.nextInt(6)+1;
