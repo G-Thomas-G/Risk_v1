@@ -122,15 +122,47 @@ public class Spiel {
             if (anzahl >= 4) {
                 int[]vonergebnis = new int[3];
                 vonergebnis = würfeln(3);
-                int zahl1 = 0;
-                int zahl2 = 0;
+                int[] vonbesteZahlen = new int[2]; //es werden maximal nur 2 Zahlen benötigt: die höchsten 2.
+                int zähler = 0; // Die Anzahl der ausgewählten Zahlen
                 for (int i = 0;i<vonergebnis.length;i++){
+                    if (i == 0){
+                        vonbesteZahlen[i] = vonergebnis[i];
+                        zähler++;
+                    }
+                    else {
+                        if (zähler ==1){
+                            if (vonergebnis[i-1]<= vonergebnis[i]){
+                                vonbesteZahlen[zähler] = vonergebnis[i];
+                                zähler++;
+                            }
+                            else {
+                                if(i == 2){
+                                    vonbesteZahlen[zähler] = vonergebnis[i];
+                                }
+                            }
+                        }
+                        else {
 
+                        }
+
+                    }
                 }
             }
             if (anzahl == 3) {
                 int[]vonergebnis = new int[2];
                 vonergebnis = würfeln(2);
+                int[] vonbesteZahlen = new int[2]; //es werden maximal nur 2 Zahlen benötigt: die höchsten 2.
+                int zähler = 0; // Die Anzahl der ausgewählten Zahlen
+                for (int i = 0;i<vonergebnis.length;i++){
+                    if (i == 0){
+                        vonbesteZahlen[i] = vonergebnis[i];
+                    }
+                    else {
+                        if (vonergebnis[i-1]<= vonergebnis[i]){
+                            vonbesteZahlen[i] = vonergebnis[i];
+                        }
+                    }
+                }
             }
             if (anzahl == 2) {
                 int[]vonergebnis = new int[1];
