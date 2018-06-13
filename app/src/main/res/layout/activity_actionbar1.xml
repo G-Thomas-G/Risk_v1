@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1E1E1E"
+    android:id="@+id/ac1l"
     android:orientation="horizontal">
 
 
@@ -12,8 +13,9 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_marginStart="20dp"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:text="Place Troops"
+        android:textAlignment="viewStart"
         android:textColor="#FFF"
         android:textSize="20dp" />
 
@@ -55,15 +57,16 @@
                 android:textSize="9sp" />
         </LinearLayout>
 
+
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/material_button"
+            android:id="@+id/dest"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="20dp"
-            android:onClick="next"
-            android:text="Next"
+            android:onClick="dest"
+            android:text="Destination"
             app:cornerRadius="10dp" />
 
     </LinearLayout>

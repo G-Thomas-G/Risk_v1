@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/map"
     android:orientation="vertical"
     android:theme="@style/AppTheme.NoActionBar">
@@ -21,37 +22,54 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
-            android:background="#000000"
-            android:onClick="startSettings" />
+            android:background="#0000ff"
+            android:onClick="next1" />
 
     </RelativeLayout>
 
-    <ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/vf"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#1E1E1E">
 
-        <include
-            android:id="@+id/include1"
-            layout="@layout/activity_actionbar1" />
+        <ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/vf"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1">
 
-        <include
-            android:id="@+id/include2"
-            layout="@layout/activity_actionbar2" />
+            <include
+                android:id="@+id/include1"
+                layout="@layout/activity_actionbar1" />
 
-        <include
-            android:id="@+id/include3"
-            layout="@layout/activity_actionbar3" />
+            <include
+                android:id="@+id/include2"
+                layout="@layout/activity_actionbar2" />
 
-        <include
-            android:id="@+id/include4"
-            layout="@layout/activity_actionbar4" />
+            <include
+                android:id="@+id/include3"
+                layout="@layout/activity_actionbar3" />
 
-        <include
-            android:id="@+id/include5"
-            layout="@layout/activity_actionbar5" />
+            <include
+                android:id="@+id/include4"
+                layout="@layout/activity_actionbar4" />
 
-    </ViewFlipper>
+            <include
+                android:id="@+id/include5"
+                layout="@layout/activity_actionbar5" />
 
+        </ViewFlipper>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/material_button"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="20dp"
+            android:onClick="next1"
+            android:text="Next"
+            app:cornerRadius="10dp" />
+    </LinearLayout>
 
 </LinearLayout>

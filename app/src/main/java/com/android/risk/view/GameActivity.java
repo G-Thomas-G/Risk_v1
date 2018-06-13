@@ -1,5 +1,6 @@
 package com.android.risk.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ViewFlipper;
@@ -14,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class GameActivity extends AppCompatActivity {
 
-
     /**
      * getting called on obj. creation, ow. def.
      *
@@ -27,6 +27,10 @@ public class GameActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_game);
+
+
+        ViewFlipper vf = findViewById(R.id.vf);
+        vf.setDisplayedChild(vf.indexOfChild(findViewById(R.id.include1)));
 
 
     }
@@ -47,19 +51,20 @@ public class GameActivity extends AppCompatActivity {
 
     @Override                       //getting called on press of system-backbttn, overwrites default
     public void onBackPressed() {
-
+        Intent myIntent = new Intent(GameActivity.this, MainActivity.class);
+        GameActivity.this.startActivity(myIntent);
     }
 
-    public void next1() {
+    public void next1(View v) {
 
         ViewFlipper vf = findViewById(R.id.vf);
-        vf.setDisplayedChild(1);
+        vf.setDisplayedChild(vf.indexOfChild(findViewById(R.id.include2)));
     }
 
-    public void next2() {
+    public void next2(View v) {
 
         ViewFlipper vf = findViewById(R.id.vf);
-        vf.setDisplayedChild(2);
+        vf.setDisplayedChild(vf.indexOfChild(findViewById(R.id.include3)));
     }
 
 
