@@ -123,31 +123,42 @@ public class Spiel {
                 int[]vonergebnis = new int[3];
                 vonergebnis = würfeln(3);
                 int[] vonbesteZahlen = new int[2]; //es werden maximal nur 2 Zahlen benötigt: die höchsten 2.
-                int zähler = 0; // Die Anzahl der ausgewählten Zahlen
+                //int zähler = 0; // Die Anzahl der ausgewählten Zahlen
+                boolean gespeichert = false; //Beschreibt, ob die 2. Zahl gespeichert wurde.
                 for (int i = 0;i<vonergebnis.length;i++){
                     if (i == 0){
                         vonbesteZahlen[i] = vonergebnis[i];
-                        zähler++;
+                        //zähler++;
                     }
                     else {
-                        if (zähler ==1){
+                        if (i == 1){
                             if (vonergebnis[i-1]<= vonergebnis[i]){
-                                vonbesteZahlen[zähler] = vonergebnis[i];
-                                zähler++;
+                                vonbesteZahlen[i] = vonergebnis[i];
+                                gespeichert = true;
+                                //zähler++;
                             }
                             else {
                                 if(i == 2){
-                                    vonbesteZahlen[zähler] = vonergebnis[i];
+                                    if (gespeichert){
+                                        if (vonbesteZahlen[0] <= vonergebnis[i]) {
+                                            vonbesteZahlen[0] = vonergebnis[i];
+                                        }
+                                    }
+                                    else {
+                                        if (vonergebnis[1] <= vonergebnis[i]) {
+                                            vonbesteZahlen[1] = vonergebnis[i];
+                                        }
+                                        else {
+                                            vonbesteZahlen[1] = vonergebnis[i-1];
+                                        }
+                                    }
                                 }
                             }
                         }
-                        else {
-
-                        }
-
                     }
                 }
             }
+
             if (anzahl == 3) {
                 int[]vonergebnis = new int[2];
                 vonergebnis = würfeln(2);
