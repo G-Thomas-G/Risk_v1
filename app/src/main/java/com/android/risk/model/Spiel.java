@@ -229,7 +229,7 @@ public class Spiel {
             if (anzahl >= 1) { //rekursiver Aufruf
                 angreifen(von, nach, anzahl, durchlauf++);
             }
-            else {}
+            else {} //Ende der Methode aufgrund fehlender Angriffstruppen
         }
     }
 
