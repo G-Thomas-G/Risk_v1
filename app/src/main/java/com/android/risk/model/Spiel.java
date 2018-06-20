@@ -236,7 +236,14 @@ public class Spiel {
      */
     void truppenBewegen(int von, int nach, int anzahl) {
         if (phase == 2) {
-            //TODO Truppen bewegen
+            if (karte.getRegion(von).getBesetzer().equals(spieler[amZug])) {
+                if (karte.verbunden(von, nach)) {
+                    if (karte.getRegion(von).gibTruppenanzahl()>=anzahl) {
+                        karte.getRegion(von).truppenEntfernen(anzahl);
+                        karte.getRegion(nach).truppenHinzufuegen(anzahl);
+                    }
+                }
+            }
         }
     }
 

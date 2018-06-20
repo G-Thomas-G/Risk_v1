@@ -442,7 +442,7 @@ class Region {
     }
 
     /**
-     * Die Methode ist für den Spielbeginn und die 1. Phase (Truppen setzen) von Bedeutung.
+     * Die Methode ist für alle Phasen von Bedeutung.
      * Die Menge der Truppen wird der aktuellen Truppenzahl hinzugefügt.
      *
      * @param anzahl Die Anzahl der hinzuzufügenden Truppen.
