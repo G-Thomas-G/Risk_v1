@@ -77,7 +77,7 @@ public class Spieler {
      * @param anzahl: Anzahl der angreifenden Truppen
      */
     public void angreifen(int von, int nach, int anzahl) {
-        spiel.angreifen(von, nach, anzahl);
+        spiel.angreifenAufrufer(von, nach, anzahl);
     }
 
     /**

@@ -100,29 +100,36 @@ public class Spiel {
         phase = (phase + 1) % 3; //immer ein Kreislauf: 0,1,2,0,1,2,......
     }
 
+
+    void angreifenAufrufer(int von, int nach, int anzahl){
+        angreifen(von, nach, anzahl, 0);
+    }
     /**
      * Steuert den Angriffsvorgang von einem Gebiet zum anderen und berechnet die Verluste
      * und entscheidet so, ob das Gebiet erobert wurde.
      *
      * @param von    Eigenes Gebiet, von dem der Angriff ausgeht.
      * @param nach   Zielgebiet, das angegriffen wird.
-     * @param anzahl Anzahl der angreifenden Truppen
+     * @param anzahl Anzahl der angreifenden Truppen (nur die angreifenden Truppen! 1 Truppe bliebt zurück!)
      */
-    void angreifen(int von, int nach, int anzahl) {
+    void angreifen(int von, int nach, int anzahl, int durchlauf) {
         if (phase == 1) {
             Region vonregion = karte.getRegion(von);
             Region zielregion = karte.getRegion(nach);
-
+            if (durchlauf == 0) {
+                vonregion.truppenEntfernen(anzahl); //überlebende werden später wieder gutgeschrieben
+            }
             //Würfeln
             //4 Angreifer = 3 Würfel; 2 Verteidiger = 2 Würfel
 
             //Angreifer/Verteidiger verliert maximal 2 Truppen pro Angriff; die besten 2 Würfel zählen
 
+            int[] vonbesteZahlen = new int[2]; //es werden maximal nur 2 Zahlen benötigt: die höchsten 2.
             //Angreifer
-            if (anzahl >= 4) {
+            if (anzahl >= 3) {
                 int[]vonergebnis = new int[3];
                 vonergebnis = würfeln(3);
-                int[] vonbesteZahlen = new int[2]; //es werden maximal nur 2 Zahlen benötigt: die höchsten 2.
+                //int[] vonbesteZahlen = new int[2]; //es werden maximal nur 2 Zahlen benötigt: die höchsten 2.
                 //int zähler = 0; // Die Anzahl der ausgewählten Zahlen
                 boolean gespeichert = false; //Beschreibt, ob die 2. Zahl gespeichert wurde.
                 for (int i = 0;i<vonergebnis.length;i++){
@@ -159,37 +166,61 @@ public class Spiel {
                 }
             }
 
-            if (anzahl == 3) {
+            if (anzahl == 2) {
                 int[]vonergebnis = new int[2];
                 vonergebnis = würfeln(2);
-                int[] vonbesteZahlen = new int[2]; //es werden maximal nur 2 Zahlen benötigt: die höchsten 2.
-                int zähler = 0; // Die Anzahl der ausgewählten Zahlen
-                for (int i = 0;i<vonergebnis.length;i++){
-                    if (i == 0){
-                        vonbesteZahlen[i] = vonergebnis[i];
-                    }
-                    else {
-                        if (vonergebnis[i-1]<= vonergebnis[i]){
-                            vonbesteZahlen[i] = vonergebnis[i];
-                        }
-                    }
-                }
+                //int[] vonbesteZahlen = new int[2]; //es werden maximal nur 2 Zahlen benötigt: die höchsten 2.
+                vonbesteZahlen[0] = vonergebnis[0];
+                vonbesteZahlen[1] = vonergebnis[1];
             }
-            if (anzahl == 2) {
+            if (anzahl == 1) {
                 int[]vonergebnis = new int[1];
+                //int[] vonbesteZahlen = new int[1]; // nur eine Zahl wird benötigt
                 vonergebnis = würfeln(1);
+                vonbesteZahlen[0] = vonergebnis[0];
             }
 
+            int[]nachergebnis = new int[2];
 
             //Verteidiger
             if (vonregion.gibTruppenanzahl() >= 2) {
-                int[]nachergebnis = new int[2];
+                //int[]nachergebnis = new int[2];
                 nachergebnis = würfeln(2);
             }
             if (vonregion.gibTruppenanzahl() == 1) {
-                int[]nachergebnis = new int[1];
+                //int[]nachergebnis = new int[1];
                 nachergebnis = würfeln(1);
             }
+            int vongrößteZahl = Math.max(vonbesteZahlen[0],vonbesteZahlen[1]);
+            int vonkleinereZahl = Math.min(vonbesteZahlen[0],vonbesteZahlen[1]);
+            int nachgrößteZahl = Math.max(nachergebnis[0],nachergebnis[1]);
+            int nachkleinereZahl = Math.min(nachergebnis[0],nachergebnis[1]);
+
+            if (vongrößteZahl <= nachgrößteZahl){
+                //vonregion.truppenEntfernen(1); //Abziehen der Truppen der Region
+                anzahl -= 1;
+            }
+            else {
+                zielregion.truppenEntfernen(1);
+                anzahl -= 1;
+            }
+            if (vonkleinereZahl <= nachkleinereZahl){
+                //vonregion.truppenEntfernen(1);
+                anzahl -= 1;
+            }
+            else{
+                zielregion.truppenEntfernen(1);
+                anzahl -= 1;
+            }
+            if (zielregion.gibTruppenanzahl() <= 0){
+                zielregion.setBesetzer(vonregion.getBesetzer());
+                vonregion.truppenEntfernen(1);
+
+            }
+            if (anzahl >= 1) {
+                angreifen(von, nach, anzahl, durchlauf++);
+            }
+            else {}
         }
     }
 
