@@ -15,9 +15,16 @@ public class Spieler {
     private ArrayList<Region> besetzteRegionen = new ArrayList<>();
     private boolean amZug = false;
 
-    public Spieler(Farbe farbe, String name) {
+    private Spieler(Farbe farbe, String name, Spiel spiel) {
         this.farbe = farbe;
         this.name = name;
+        this.spiel = spiel;
+    }
+
+    public static Spieler getNewSpieler(Farbe farbe, String name, Spiel spiel) {
+        Spieler spieler = new Spieler(farbe,name,spiel);
+        spiel.spielerRegistrieren(spieler);
+        return spieler;
     }
 
     /**
