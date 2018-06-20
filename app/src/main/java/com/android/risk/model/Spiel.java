@@ -101,6 +101,12 @@ public class Spiel {
     }
 
 
+    /**
+     * Aufrufer/Starter der angreifen() Methode
+     * @param von Eigenes Gebiet, von dem der Angriff ausgeht.
+     * @param nach Zielgebiet, das angegriffen wird.
+     * @param anzahl Anzahl der angreifenden Truppen (nur die angreifenden Truppen! 1 Truppe bliebt zurück!)
+     */
     void angreifenAufrufer(int von, int nach, int anzahl){
         angreifen(von, nach, anzahl, 0);
     }
@@ -111,6 +117,7 @@ public class Spiel {
      * @param von    Eigenes Gebiet, von dem der Angriff ausgeht.
      * @param nach   Zielgebiet, das angegriffen wird.
      * @param anzahl Anzahl der angreifenden Truppen (nur die angreifenden Truppen! 1 Truppe bliebt zurück!)
+     * @param durchlauf Zählt die Durchläufe (nur beim ersten Durchlauf relevant)
      */
     void angreifen(int von, int nach, int anzahl, int durchlauf) {
         if (phase == 1) {
@@ -133,7 +140,7 @@ public class Spiel {
                 //int zähler = 0; // Die Anzahl der ausgewählten Zahlen
                 boolean gespeichert = false; //Beschreibt, ob die 2. Zahl gespeichert wurde.
                 for (int i = 0;i<vonergebnis.length;i++){
-                    if (i == 0){
+                    if (i == 0){ //erstes Würfelergebnis wird immer gespeichert
                         vonbesteZahlen[i] = vonergebnis[i];
                         //zähler++;
                     }
@@ -141,17 +148,17 @@ public class Spiel {
                         if (i == 1){
                             if (vonergebnis[i-1]<= vonergebnis[i]){
                                 vonbesteZahlen[i] = vonergebnis[i];
-                                gespeichert = true;
+                                gespeichert = true; //Sollte die zweite Würfelzahl größer sein wird sie gespeichert
                                 //zähler++;
                             }
                             else {
                                 if(i == 2){
-                                    if (gespeichert){
+                                    if (gespeichert){  //In diesem Fall muss nur noch zwischen der letzten und der ersten entschieden werden
                                         if (vonbesteZahlen[0] <= vonergebnis[i]) {
                                             vonbesteZahlen[0] = vonergebnis[i];
                                         }
                                     }
-                                    else {
+                                    else { //Andernfalls muss nur zwischen 2 und 3 entschieden werden
                                         if (vonergebnis[1] <= vonergebnis[i]) {
                                             vonbesteZahlen[1] = vonergebnis[i];
                                         }
@@ -191,6 +198,8 @@ public class Spiel {
                 //int[]nachergebnis = new int[1];
                 nachergebnis = würfeln(1);
             }
+
+            //Speichern der Würfelergebnisse
             int vongrößteZahl = Math.max(vonbesteZahlen[0],vonbesteZahlen[1]);
             int vonkleinereZahl = Math.min(vonbesteZahlen[0],vonbesteZahlen[1]);
             int nachgrößteZahl = Math.max(nachergebnis[0],nachergebnis[1]);
@@ -212,12 +221,12 @@ public class Spiel {
                 zielregion.truppenEntfernen(1);
                 anzahl -= 1;
             }
-            if (zielregion.gibTruppenanzahl() <= 0){
+            if (zielregion.gibTruppenanzahl() <= 0){ //Übernahme der Zielregion durch den Angreifer
                 zielregion.setBesetzer(vonregion.getBesetzer());
                 vonregion.truppenEntfernen(1);
 
             }
-            if (anzahl >= 1) {
+            if (anzahl >= 1) { //rekursiver Aufruf
                 angreifen(von, nach, anzahl, durchlauf++);
             }
             else {}
