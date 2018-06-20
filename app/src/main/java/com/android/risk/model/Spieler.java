@@ -15,9 +15,16 @@ public class Spieler {
     private ArrayList<Region> besetzteRegionen = new ArrayList<>();
     private boolean amZug = false;
 
-    public Spieler(Farbe farbe, String name) {
+    private Spieler(Farbe farbe, String name, Spiel spiel) {
         this.farbe = farbe;
         this.name = name;
+        this.spiel = spiel;
+    }
+
+    public static Spieler getNewSpieler(Farbe farbe, String name, Spiel spiel) {
+        Spieler spieler = new Spieler(farbe,name,spiel);
+        spiel.spielerRegistrieren(spieler);
+        return spieler;
     }
 
     /**
@@ -93,31 +100,31 @@ public class Spieler {
     }
 
     /**
-     * Beendet die dritte Phase
+     * Beendet die dritte Phase.
      */
     public void zugBeenden() {
         spiel.naechstePhase();
     }
 
     /**
-     * Setzt das Attribut amZug
-     * @param amZug
+     * Setzt das Attribut amZug.
+     * @param amZug Der neue Inhalt der Variable amZug
      */
     public void setAmZug(boolean amZug) {
         this.amZug = amZug;
     }
 
     /**
-     * Gibt eine Liste der besetzten Regionen eines Spielers zurück
-     * @return
+     * Gibt eine Liste der besetzten Regionen eines Spielers zurück.
+     * @return Die Liste der besetzten Regionen
      */
     public ArrayList<Region> gibBesetzteRegionen() {
         return besetzteRegionen;
     }
 
     /**
-     * Gibt die Anzahl der besetzten Regionen zurück
-     * @return
+     * Gibt die Anzahl der besetzten Regionen zurück.
+     * @return Die Anzahl der besetzten Regionen
      */
     public int gibAnzahlBesetzteRegionen() {
         return besetzteRegionen.size();

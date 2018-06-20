@@ -433,9 +433,9 @@ class Region {
         boolean[] besucht = accordingKontinent.getKarte().getBesucht();
         besucht[regionenname] = true;
 
-        for (Region akktuell : angrenzendeGebiete) {
-            if (akktuell.getBesetzer().equals(besetzer) && !besucht[akktuell.regionenname]) {
-                if (akktuell.verbunden(ziel)) return true;
+        for (Region aktuell : angrenzendeGebiete) {
+            if (aktuell.getBesetzer().equals(besetzer) && !besucht[aktuell.regionenname]) {
+                if (aktuell.verbunden(ziel)) return true;
             }
         }
         return false;
