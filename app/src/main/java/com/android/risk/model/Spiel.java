@@ -301,7 +301,7 @@ public class Spiel {
      *
      * @param spieler Ein Spieler, der regestriert werden muss.
      */
-    public void spielerRegistrieren(Spieler spieler) {
+    void spielerRegistrieren(Spieler spieler) {
         if (phase == -2) {
             this.spieler[amZug++] = spieler;
             if (amZug == this.spieler.length) {

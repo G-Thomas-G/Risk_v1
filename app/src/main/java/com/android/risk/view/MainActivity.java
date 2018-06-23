@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity
     public void startGame(View view) {
         Intent myIntent = new Intent(MainActivity.this, GameActivity.class);
         MainActivity.this.startActivity(myIntent);
+        com.android.risk.presenter.GameManager.getSingleton(2);//TODO hardcoded number
     }
 
 }

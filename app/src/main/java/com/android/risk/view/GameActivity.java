@@ -67,5 +67,8 @@ public class GameActivity extends AppCompatActivity {
         vf.setDisplayedChild(vf.indexOfChild(findViewById(R.id.include3)));
     }
 
+    public void dest(View v) {
+
+    }
 
 }

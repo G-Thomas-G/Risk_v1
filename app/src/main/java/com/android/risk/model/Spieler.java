@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Thomas
  */
 public class Spieler {
-    private final Farbe farbe;
+    private final int farbe;
     private final String name;
     private Spiel spiel;
     private int truppenzahl;
@@ -15,13 +15,13 @@ public class Spieler {
     private ArrayList<Region> besetzteRegionen = new ArrayList<>();
     private boolean amZug = false;
 
-    private Spieler(Farbe farbe, String name, Spiel spiel) {
+    private Spieler(int farbe, String name, Spiel spiel) {
         this.farbe = farbe;
         this.name = name;
         this.spiel = spiel;
     }
 
-    public static Spieler getNewSpieler(Farbe farbe, String name, Spiel spiel) {
+    public static Spieler getNewSpieler(int farbe, String name, Spiel spiel) {
         Spieler spieler = new Spieler(farbe,name,spiel);
         spiel.spielerRegistrieren(spieler);
         return spieler;
@@ -41,7 +41,7 @@ public class Spieler {
      *
      * @return Farbe
      */
-    public Farbe getFarbe() {
+    public int getFarbe() {
         return farbe;
     }
 

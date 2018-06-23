@@ -64,6 +64,8 @@ public class Actionbar1 extends AppCompatActivity {
 
     }
 
-
+    public void dest(View v) {
+        System.out.print("Test");
+    }
 
 }
