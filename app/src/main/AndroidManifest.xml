@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.android.risk">
 
     <application
@@ -8,7 +9,8 @@
         android:label="Risk"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name="com.android.risk.view.MainActivity"
             android:label=""
@@ -32,7 +34,7 @@
         <activity android:name="com.android.risk.view.Actionbar2" />
         <activity android:name="com.android.risk.view.Actionbar3" />
         <activity android:name="com.android.risk.view.Actionbar4" />
-        <activity android:name="com.android.risk.view.Actionbar5"></activity>
+        <activity android:name="com.android.risk.view.Actionbar5" />
 
         <meta-data
             android:name="preloaded_fonts"
